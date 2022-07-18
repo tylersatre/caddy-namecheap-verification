@@ -14,7 +14,7 @@ jobs:
 
       - name: Check if image needs updating
         id: check
-        uses: lucacome/docker-image-update-checker@1
+        uses: lucacome/docker-image-update-checker@v1
         with:
           base-image: caddy:2-builder
           image: ghcr.io/tylersatre/caddy-namecheap-verification:2
