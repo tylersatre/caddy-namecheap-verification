@@ -1,0 +1,1 @@
+This builds a Caddy 2 image with the [Namecheap module](https://github.com/caddy-dns/namecheap) for ACME DNS challenge verification.
