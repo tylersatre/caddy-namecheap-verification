@@ -1,4 +1,4 @@
-name: Nightly Update Check
+name: Update Image
 on:
   schedule:
     - cron: "0 0 * * *"
@@ -15,17 +15,9 @@ jobs:
       - name: Log in to registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
 
-      - name: Check if image needs updating
-        id: check
-        uses: lucacome/docker-image-update-checker@v1
-        with:
-          base-image: caddy:2-builder
-          image: ghcr.io/tylersatre/caddy-namecheap-verification:2
-
       - name: Build and push image
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
           tags: ghcr.io/tylersatre/caddy-namecheap-verification:2
-        if: steps.check.outputs.needs-updating == 'true'
